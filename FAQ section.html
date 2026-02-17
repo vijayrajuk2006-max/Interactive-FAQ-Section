@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive FAQ Section</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  background:#f4f6f9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.container{
+  width:500px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:25px;
+  color:#1f2937;
+}
+
+.faq{
+  background:#ffffff;
+  border-radius:8px;
+  margin-bottom:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
+
+.question{
+  padding:15px 20px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  color:#111827;
+}
+
+.question span{
+  transition:transform 0.3s ease;
+}
+
+.answer{
+  max-height:0;
+  overflow:hidden;
+  padding:0 20px;
+  color:#4b5563;
+  font-size:14px;
+  line-height:1.6;
+  transition:max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq.active .answer{
+  max-height:150px;
+  padding:10px 20px 20px;
+}
+
+.faq.active .question span{
+  transform:rotate(180deg);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="question">
+      What services do you offer?
+      <span>▼</span>
+    </div>
+    <div class="answer">
+      We provide full-stack web development services including frontend design,
+      backend development, and database integration.
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="question">
+      How long does a project take?
+      <span>▼</span>
+    </div>
+    <div class="answer">
+      Project timelines vary depending on complexity, but most standard
+      websites are delivered within 2–4 weeks.
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="question">
+      Do you provide ongoing support?
+      <span>▼</span>
+    </div>
+    <div class="answer">
+      Yes, we offer maintenance and support packages to ensure your
+      website remains secure and up to date.
+    </div>
+  </div>
+
+</div>
+
+<script>
+const faqs = document.querySelectorAll(".faq");
+
+faqs.forEach(faq => {
+  faq.querySelector(".question").addEventListener("click", () => {
+    
+    // Close others (Professional behavior)
+    faqs.forEach(item => {
+      if(item !== faq){
+        item.classList.remove("active");
+      }
+    });
+
+    // Toggle current
+    faq.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>
